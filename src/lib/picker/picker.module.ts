@@ -1,3 +1,4 @@
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,7 @@ const components: any[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, EmojiModule],
+  imports: [CommonModule, FormsModule, ScrollingModule, EmojiModule],
   exports: components,
   declarations: components,
 })

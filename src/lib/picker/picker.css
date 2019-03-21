@@ -77,11 +77,9 @@
   max-height: 18px;
 }
 
-.emoji-mart-scroll {
-  overflow-y: scroll;
-  height: 270px;
-  padding: 0 6px 6px 6px;
-  will-change: transform; /* avoids "repaints on scroll" in mobile Chrome */
+.emoji-mart-category-label,
+.cdk-virtual-scroll-content-wrapper {
+  padding: 0 6px;
 }
 
 .emoji-mart-search {

@@ -83,6 +83,7 @@ export class PickerComponent implements OnInit {
   @Input() sheetSize: Emoji['sheetSize'] = 64;
   @Input() emojisToShowFilter?: (x: string) => boolean;
   @Input() showPreview = true;
+  @Input() showSearch = true;
   @Input() emojiTooltip = false;
   @Input() autoFocus = false;
   @Input() custom: any[] = [];

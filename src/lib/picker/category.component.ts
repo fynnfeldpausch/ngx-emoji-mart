@@ -30,8 +30,9 @@ import { EmojiFrequentlyService } from './emoji-frequently.service';
     </div>
 
     <ng-template [ngIf]="emojis">
+    <cdk-virtual-scroll-viewport [style.height]="((emojiSize + 12) * totalFrequentLines) + 'px'" itemSize="(emojiSize + 12) / perLine">
       <ngx-emoji
-        *ngFor="let emoji of emojis; trackBy: trackById"
+        *cdkVirtualFor="let emoji of emojis; trackBy: trackById"
         [emoji]="emoji"
         [size]="emojiSize"
         [skin]="emojiSkin"
@@ -46,6 +47,7 @@ import { EmojiFrequentlyService } from './emoji-frequently.service';
         (emojiLeave)="emojiLeave.emit($event)"
         (emojiClick)="emojiClick.emit($event)"
       ></ngx-emoji>
+    </cdk-virtual-scroll-viewport>
     </ng-template>
 
     <div *ngIf="emojis && !emojis.length">

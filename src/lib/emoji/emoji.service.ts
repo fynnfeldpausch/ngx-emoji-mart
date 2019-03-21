@@ -82,7 +82,7 @@ export class EmojiService {
     emoji: EmojiData | string,
     skin?: Emoji['skin'],
     set?: Emoji['set'],
-  ): EmojiData | null {
+  ): EmojiData | string {
     let emojiData: any;
 
     if (typeof emoji === 'string') {
@@ -98,7 +98,7 @@ export class EmojiService {
       if (this.names.hasOwnProperty(emoji)) {
         emojiData = this.names[emoji];
       } else {
-        return null;
+        return emoji;
       }
     } else if (emoji.id) {
       emojiData = this.names[emoji.id];
@@ -160,9 +160,9 @@ export class EmojiService {
     return `${multiply * sheet_x}% ${multiply * sheet_y}%`;
   }
 
-  sanitize(emoji: EmojiData | null): EmojiData | null {
-    if (emoji === null) {
-      return null;
+  sanitize(emoji: EmojiData | string): EmojiData | string {
+    if (typeof emoji === 'string') {
+      return emoji;
     }
     const id = emoji.id || emoji.shortNames[0];
     let colons = `:${id}:`;

@@ -171,11 +171,11 @@ export class EmojiComponent implements OnChanges, Emoji {
   }
 
   getData() {
-    return this.emojiService.getData(this.emoji, this.skin, this.set);
+    return this.convert(this.emojiService.getData(this.emoji, this.skin, this.set));
   }
 
   getSanitizedData(): EmojiData {
-    return this.emojiService.getSanitizedData(this.emoji, this.skin, this.set) as EmojiData;
+    return this.convert(this.emojiService.getSanitizedData(this.emoji, this.skin, this.set)) as EmojiData;
   }
 
   handleClick($event: Event) {
@@ -191,5 +191,20 @@ export class EmojiComponent implements OnChanges, Emoji {
   handleLeave($event: Event) {
     const emoji = this.getSanitizedData();
     this.emojiLeave.emit({ emoji, $event });
+  }
+
+  private convert(emoji: EmojiData | string): EmojiData | null {
+    if (typeof emoji === 'string') {
+      try {
+        return {
+          id: emoji,
+          unified: emoji,
+          native: this.emojiService.unifiedToNative(emoji)
+        } as EmojiData;
+      } catch {
+        return null;
+      }
+    }
+    return emoji;
   }
 }

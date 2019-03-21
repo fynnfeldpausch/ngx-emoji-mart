@@ -1,5 +1,5 @@
 import { CompressedEmojiData } from './data.interfaces';
-export const emojis: CompressedEmojiData[] = [
+export const emojis: CompressedEmojiData[] = [/*
   {
     name: 'Monkey Face',
     unified: '1F435',
@@ -21093,4 +21093,4 @@ export const emojis: CompressedEmojiData[] = [
     sheet: [24, 40],
     shortName: 'gem'
   }
-];
+*/];
